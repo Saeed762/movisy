@@ -1,0 +1,91 @@
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  border-bottom: 1px solid #e6e6e6;
+  background: #111;
+}
+
+/* اللوجو */
+.navbar > h1 {
+  font-size: 32px;
+  color: #ffe400;
+  cursor: pointer;
+}
+
+/* الروابط */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* كل رابط */
+.navbar-links span {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.navbar-links span:hover {
+  color: #ffe400;
+  transform: scale(1.05);
+}
+
+/* الإيموجي */
+.navbar-emojis {
+  width: 22px;
+  height: 22px;
+  margin-left: 6px;
+}
+
+/* ================= */
+/* ❤️ FAVORITES */
+/* ================= */
+
+.fav-container {
+  position: relative;
+  cursor: pointer;
+  font-size: 24px;
+  transition: 0.2s;
+}
+
+/* hover */
+.fav-container:hover {
+  transform: scale(1.1);
+}
+
+/* القلب */
+.heart-icon {
+  display: block;
+}
+
+/* العداد */
+.fav-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+
+  background: #e53935;
+  color: white;
+
+  font-size: 11px;
+  font-weight: bold;
+
+  padding: 2px 6px;
+  border-radius: 50%;
+
+  min-width: 18px;
+  text-align: center;
+}
+
+/* click effect */
+.fav-container:active {
+  transform: scale(0.9);
+}

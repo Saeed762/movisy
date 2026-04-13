@@ -1,0 +1,66 @@
+/* السيكشن */
+.movie_list {
+  padding: 20px 30px;
+}
+
+/* الهيدر */
+.movie_list_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* العنوان */
+.movie_list_heading {
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* الايموجي */
+.emoji {
+  width: 24px;
+}
+
+/* اليمين */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* الفلاتر */
+.movie_filter {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.movie_filter_item {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.movie_filter_item.active {
+  border-bottom: 2px solid #fff;
+  font-weight: 600;
+}
+
+/* select */
+.movie_sorting {
+  border-radius: 5px;
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid #ddd;
+}
+
+/* الكروت */
+.movie_cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}

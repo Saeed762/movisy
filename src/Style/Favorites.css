@@ -1,0 +1,91 @@
+/* الصفحة */
+.favorites {
+  padding: 20px;
+}
+
+/* المستطيل */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* الصورة */
+.item img {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* النص */
+.item h3 {
+  margin: 0;
+}
+
+.item p {
+  margin: 2px 0;
+}
+.favorites {
+  padding: 20px;
+}
+
+/* عنصر واحد */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  border-radius: 8px;
+}
+
+/* الصورة */
+.fav-img {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* المعلومات */
+.info {
+  flex: 1;
+}
+
+.info h3 {
+  margin: 0;
+}
+
+.meta {
+  color: #e53935;
+  margin: 3px 0;
+}
+
+.date {
+  font-size: 13px;
+  color: gray;
+}
+
+/* زر الحذف */
+.remove-btn {
+  background: transparent;
+  border: none;
+  color: red;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  transform: scale(1.2);
+}
+
+/* حالة فارغة */
+.empty {
+  color: gray;
+}
