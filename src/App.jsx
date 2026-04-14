@@ -11,7 +11,6 @@ import Movie_List from "./Components/Movie_List";
 import Footer from "./Components/Footer";
 
 const App = () => {
-  // 🔥 1. تحميل من localStorage
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem("favorites");
     return saved ? JSON.parse(saved) : [];
@@ -19,12 +18,10 @@ const App = () => {
 
   const [search, setSearch] = useState("");
 
-  // 🔥 2. حفظ تلقائي
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  // 🔥 3. إضافة بدون تكرار
   function addTofavorites(movie) {
     setFavorites((prev) => {
       const exists = prev.find((m) => m.id === movie.id);
@@ -37,7 +34,6 @@ const App = () => {
     console.log(import.meta.env);
   }
 
-  // 🔥 4. حذف
   function removeFromFavorites(id) {
     setFavorites((prev) => prev.filter((movie) => movie.id !== id));
   }

@@ -35,8 +35,6 @@ export default function Favorites({ favList = [], onRemove }) {
           </div>
         ))
       )}
-
-      {/* 🔥 استعمال API */}
       <ConfirmModal
         isOpen={!!selectedId}
         onClose={() => setSelectedId(null)}

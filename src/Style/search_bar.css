@@ -1,11 +1,9 @@
-/* الحاوية */
 .search-bar {
   display: flex;
   justify-content: center;
   margin: 20px 0;
 }
 
-/* input */
 .search-bar input {
   width: 300px;
   max-width: 90%;
@@ -21,7 +19,6 @@
   transition: 0.3s;
 }
 
-/* عند الضغط */
 .search-bar input:focus {
   border-color: #e53935;
   box-shadow: 0 0 8px rgba(229, 57, 53, 0.3);

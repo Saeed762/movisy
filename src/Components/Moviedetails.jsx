@@ -25,20 +25,16 @@ export default function MovieDetails() {
 
   return (
     <div className="details-page">
-      {/* Back Button */}
       <button className="back-btn" onClick={() => navigate(-1)}>
         ⬅ Back
       </button>
 
       <div className="details-container">
-        {/* Poster */}
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
           className="details-img"
         />
-
-        {/* Info */}
         <div className="details-info">
           <h1>{movie.title}</h1>
 

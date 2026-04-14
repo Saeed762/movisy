@@ -14,11 +14,7 @@ export default function MovActors({ id }) {
       );
 
       const data = await res.json();
-
-      // 🎭 cast
       setCast(data.cast);
-
-      // 🎬 director
       const dir = data.crew.find((p) => p.job === "Director");
       setDirector(dir || null);
     };
@@ -28,7 +24,6 @@ export default function MovActors({ id }) {
 
   return (
     <div className="cast-container">
-      {/* 🔢 اختيار العدد */}
       <div className="search-container">
         <select
           className="search-input"
@@ -39,8 +34,6 @@ export default function MovActors({ id }) {
           <option value={21}>21</option>
         </select>
       </div>
-
-      {/* 🎬 المخرج */}
       {director && (
         <div className="director-card">
           <img
@@ -57,8 +50,6 @@ export default function MovActors({ id }) {
           </div>
         </div>
       )}
-
-      {/* 🎭 الممثلين */}
       <h2 className="cast-title">🎭 Cast</h2>
 
       <div className="cast-list">

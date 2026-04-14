@@ -13,7 +13,7 @@ export default function MoviesSection({
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    setMovies([]); // 🔥 مهم لمنع الخلط
+    setMovies([]);
 
     const fetchData = async () => {
       const res = await fetch(
@@ -47,7 +47,7 @@ export default function MoviesSection({
               date={movie.release_date}
               add={onAddToFavorites}
               remove={onRemoveFromFavorites}
-              favList={favList} // 🔥 مهم جداً
+              favList={favList}
             />
           ))}
       </div>

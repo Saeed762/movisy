@@ -1,9 +1,7 @@
-/* الصفحة */
 .details-page {
   padding: 30px;
 }
 
-/* زر الرجوع */
 .back-btn {
   background: #e53935;
   color: white;
@@ -14,20 +12,17 @@
   margin-bottom: 20px;
 }
 
-/* الحاوية */
 .details-container {
   display: flex;
   gap: 30px;
   align-items: center;
 }
 
-/* الصورة */
 .details-img {
   width: 300px;
   border-radius: 12px;
 }
 
-/* النص */
 .details-info {
   max-width: 500px;
 }
@@ -36,20 +31,17 @@
   margin-bottom: 10px;
 }
 
-/* التقييم */
 .rating {
   color: #e53935;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* التاريخ */
 .date {
   color: gray;
   margin-bottom: 10px;
 }
 
-/* الوصف */
 .desc {
   line-height: 1.6;
 }

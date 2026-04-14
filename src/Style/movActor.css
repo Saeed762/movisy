@@ -1,10 +1,8 @@
-/* container */
 .cast-container {
   margin-top: 30px;
   padding: 0 20px;
 }
 
-/* العنوان */
 .cast-title {
   margin-bottom: 15px;
   font-size: 22px;
@@ -12,36 +10,31 @@
   color: #fff;
 }
 
-/* list (أفقي بالكامل) */
 .cast-list {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap; /* 🔥 يمنع النزول */
+  flex-wrap: nowrap;
   gap: 15px;
   overflow-x: auto;
   padding-bottom: 10px;
 }
 
-/* اخفاء scrollbar */
 .cast-list::-webkit-scrollbar {
   display: none;
 }
 
-/* الكرت */
 .actor-card {
-  flex: 0 0 auto; /* 🔥 مهم */
+  flex: 0 0 auto;
   width: 120px;
 
   cursor: pointer;
   transition: transform 0.25s ease;
 }
 
-/* 🔥 zoom مضبوط */
 .actor-card:hover {
-  transform: scale(1.08); /* 👈 قيمة الزوم المثالية */
+  transform: scale(1.08);
 }
 
-/* الصورة */
 .actor-card img {
   width: 100%;
   height: 170px;
@@ -51,7 +44,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* النص */
 .actor-info {
   margin-top: 6px;
   text-align: center;
@@ -67,13 +59,11 @@
   font-size: 12px;
   color: #aaa;
 }
-/* container */
 .search-container {
   position: relative;
   width: 250px;
 }
 
-/* input */
 .search-input {
   width: 100%;
   padding: 10px 40px 10px 15px;
@@ -90,18 +80,15 @@
   transition: 0.25s;
 }
 
-/* placeholder */
 .search-input::placeholder {
   color: #888;
 }
 
-/* focus effect 🔥 */
 .search-input:focus {
   border-color: #e53935;
   box-shadow: 0 0 8px rgba(229, 57, 53, 0.5);
 }
 
-/* icon */
 .search-icon {
   position: absolute;
   right: 12px;
@@ -110,21 +97,18 @@
   color: #aaa;
   font-size: 14px;
 }
-/* 🎬 director */
 .director {
   margin: 10px 0;
   font-size: 16px;
   color: #ffe400;
 }
 
-/* 🔥 GRID */
 .cast-list {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7 بكل سطر */
+  grid-template-columns: repeat(7, 1fr);
   gap: 15px;
 }
 
-/* الكرت */
 .actor-card {
   width: 100%;
   cursor: pointer;
@@ -135,7 +119,6 @@
   transform: scale(1.05);
 }
 
-/* الصورة */
 .actor-card img {
   width: 100%;
   height: 170px;
@@ -143,7 +126,6 @@
   border-radius: 10px;
 }
 
-/* النص */
 .actor-info {
   margin-top: 5px;
   text-align: center;

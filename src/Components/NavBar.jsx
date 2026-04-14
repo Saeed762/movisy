@@ -11,13 +11,8 @@ export const Navbar = ({ search, setSearch, count }) => {
 
   return (
     <nav className="navbar">
-      {/* الشعار */}
       <h1 onClick={() => navigate("/")}>movisy</h1>
-
-      {/* البحث */}
       <SearchBar search={search} setSearch={setSearch} />
-
-      {/* الروابط */}
       <div className="navbar-links">
         <NavLink
           to="/movie/popular"
@@ -43,8 +38,6 @@ export const Navbar = ({ search, setSearch, count }) => {
           <img src={star} className="navbar-emojis" />
         </NavLink>
       </div>
-
-      {/* ❤️ المفضلة */}
       <NavLink
         to="/favorites"
         className={({ isActive }) =>
