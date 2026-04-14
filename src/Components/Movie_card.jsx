@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import star from "../assets/Images/star.png";
 import "../Style/movie-card.css";
 import { FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { createPortal } from "react-dom";
 
 const GENRE_MAP = {
   28: "Action",
@@ -26,6 +26,7 @@ const GENRE_MAP = {
   10752: "War",
   37: "Western",
 };
+
 export function MovieCard({
   name,
   image,
@@ -40,53 +41,55 @@ export function MovieCard({
 }) {
   const navigate = useNavigate();
   const isFavorite = favList.some((movie) => movie.id === id);
-  const enterTimer = useRef(null);
-  const idleTimer = useRef(null);
   const [showPopup, setShowPopup] = useState(false);
   const [popupPos, setPopupPos] = useState({ x: 0, y: 0 });
-  const movieGenres = genreIds
-    .map((genreId) => GENRE_MAP[genreId])
+  const showTimer = useRef(null);
+  const hideTimer = useRef(null);
+  const genres = genreIds
+    .map((idValue) => GENRE_MAP[idValue])
     .filter(Boolean)
     .slice(0, 2)
     .join(", ");
 
   useEffect(() => {
     return () => {
-      if (enterTimer.current) clearTimeout(enterTimer.current);
-      if (idleTimer.current) clearTimeout(idleTimer.current);
+      if (showTimer.current) clearTimeout(showTimer.current);
+      if (hideTimer.current) clearTimeout(hideTimer.current);
     };
   }, []);
 
-  const isDesktop = () => window.innerWidth >= 768;
+  const isDesktop = () => window.innerWidth >= 992;
 
-  const hidePopup = () => {
-    if (enterTimer.current) clearTimeout(enterTimer.current);
-    if (idleTimer.current) clearTimeout(idleTimer.current);
-    setShowPopup(false);
+  const clearTimers = () => {
+    if (showTimer.current) clearTimeout(showTimer.current);
+    if (hideTimer.current) clearTimeout(hideTimer.current);
   };
 
-  const setPopupFromMouse = (event) => {
+  const setPopupNearMouse = (event) => {
     const popupWidth = 220;
-    const popupHeight = 180;
-    const offsetX = 28;
-    const offsetY = -10;
-    let nextX = event.clientX + offsetX;
-    let nextY = event.clientY + offsetY;
+    const popupHeight = 190;
+    const margin = 8;
+    let x = event.clientX + 20;
+    let y = event.clientY - 14;
 
-    if (nextX + popupWidth > window.innerWidth - 8) {
-      nextX = event.clientX - popupWidth - 20;
+    if (x + popupWidth > window.innerWidth - margin) {
+      x = event.clientX - popupWidth - 20;
     }
-
-    if (nextY + popupHeight > window.innerHeight - 8) {
-      nextY = window.innerHeight - popupHeight - 8;
+    if (y + popupHeight > window.innerHeight - margin) {
+      y = window.innerHeight - popupHeight - margin;
     }
+    if (y < margin) y = margin;
+    if (x < margin) x = margin;
 
-    if (nextY < 8) nextY = 8;
+    setPopupPos({ x, y });
+  };
 
-    setPopupPos({
-      x: nextX,
-      y: nextY,
-    });
+  const scheduleShow = () => {
+    if (!isDesktop()) return;
+    if (showTimer.current) clearTimeout(showTimer.current);
+    showTimer.current = setTimeout(() => {
+      setShowPopup(true);
+    }, 2000);
   };
 
   return (
@@ -95,17 +98,25 @@ export function MovieCard({
       onClick={() => navigate(`/movie/${id}`)}
       onMouseEnter={(event) => {
         if (!isDesktop()) return;
-        if (enterTimer.current) clearTimeout(enterTimer.current);
-        setPopupFromMouse(event);
-        enterTimer.current = setTimeout(() => setShowPopup(true), 900);
+        clearTimers();
+        setPopupNearMouse(event);
+        scheduleShow();
       }}
       onMouseMove={(event) => {
         if (!isDesktop()) return;
-        if (enterTimer.current) clearTimeout(enterTimer.current);
-        if (idleTimer.current) clearTimeout(idleTimer.current);
-        if (showPopup) setShowPopup(false);
+        clearTimers();
+        if (showPopup) {
+          hideTimer.current = setTimeout(() => {
+            setShowPopup(false);
+          }, 260);
+        }
+        setPopupNearMouse(event);
+        scheduleShow();
       }}
-      onMouseLeave={hidePopup}
+      onMouseLeave={() => {
+        clearTimers();
+        setShowPopup(false);
+      }}
     >
       <FaHeart
         className={`heart ${isFavorite ? "active" : ""}`}
@@ -146,7 +157,7 @@ export function MovieCard({
               <h4>{name}</h4>
               <p>📅 {date || "N/A"}</p>
               <p>rate: ⭐ {rate}</p>
-              <p>genre: {movieGenres || "Unknown"}</p>
+              <p>genre: {genres || "Unknown"}</p>
             </div>
           </div>,
           document.body,
