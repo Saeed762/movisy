@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ConfirmModal from "./ConfirmModal";
-import "../Style/favorites.css";
+import "../Style/Favorites.css";
 
 export default function Favorites({ favList = [], onRemove }) {
   const [selectedId, setSelectedId] = useState(null);
