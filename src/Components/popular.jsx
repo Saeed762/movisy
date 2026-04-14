@@ -1,6 +1,6 @@
 import MoviesSection from "./MoviesSection";
 import "../Style/movie-list.css";
-function MoviesPage({ search, onAddToFavorites }) {
+function MoviesPage({ search, onAddToFavorites, onRemoveFromFavorites, favList }) {
   return (
     <div style={{ padding: "20px" }}>
       <MoviesSection
@@ -8,6 +8,8 @@ function MoviesPage({ search, onAddToFavorites }) {
         type="popular"
         search={search}
         onAddToFavorites={onAddToFavorites}
+        onRemoveFromFavorites={onRemoveFromFavorites}
+        favList={favList}
       />
     </div>
   );

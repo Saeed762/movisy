@@ -1,4 +1,3 @@
-import { useState } from "react";
 import star from "../assets/Images/star.png";
 import "../Style/movie-card.css";
 import { FaHeart } from "react-icons/fa";
@@ -11,19 +10,20 @@ export function MovieCard({
   date,
   id,
   add,
-  favList,
+  remove,
+  favList = [],
 }) {
-  const [fav, setFav] = useState(false);
   const navigate = useNavigate();
+  const isFavorite = favList.some((movie) => movie.id === id);
 
   return (
     <div className="movie_card" onClick={() => navigate(`/movie/${id}`)}>
       <FaHeart
-        className={`heart ${fav ? "active" : ""}`}
+        className={`heart ${isFavorite ? "active" : ""}`}
         onClick={(e) => {
           e.stopPropagation();
-          setFav(!fav);
-          add({ id, name, image, description, rate, date });
+          if (isFavorite) remove(id);
+          else add({ id, name, image, description, rate, date });
         }}
       />
 

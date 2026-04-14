@@ -8,6 +8,7 @@ import UpComing from "./Components/upcoming";
 import TopRated from "./Components/TopRated";
 import Popular from "./Components/popular";
 import Movie_List from "./Components/Movie_List";
+import Footer from "./Components/Footer";
 
 const App = () => {
   // 🔥 1. تحميل من localStorage
@@ -43,55 +44,77 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Navbar
-        search={search}
-        setSearch={setSearch}
-        count={favorites.length}
-        favList={favorites}
-      />
+      <div className="app-shell">
+        <Navbar
+          search={search}
+          setSearch={setSearch}
+          count={favorites.length}
+          favList={favorites}
+        />
 
-      <Routes>
-        <Route
-          path="/movie/"
-          element={
-            <Movie_List
-              onAddToFavorites={addTofavorites}
-              search={search}
-              favList={favorites}
+        <main className="app-main">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Movie_List
+                  onAddToFavorites={addTofavorites}
+                  onRemoveFromFavorites={removeFromFavorites}
+                  search={search}
+                  favList={favorites}
+                />
+              }
             />
-          }
-        />
 
-        <Route path="/movie/:id" element={<MovieDetails />} />
+            <Route path="/movie/:id" element={<MovieDetails />} />
 
-        <Route
-          path="/movie/popular"
-          element={
-            <Popular search={search} onAddToFavorites={addTofavorites} />
-          }
-        />
+            <Route
+              path="/movie/popular"
+              element={
+                <Popular
+                  search={search}
+                  onAddToFavorites={addTofavorites}
+                  onRemoveFromFavorites={removeFromFavorites}
+                  favList={favorites}
+                />
+              }
+            />
 
-        <Route
-          path="/movie/upcoming"
-          element={
-            <UpComing search={search} onAddToFavorites={addTofavorites} />
-          }
-        />
+            <Route
+              path="/movie/upcoming"
+              element={
+                <UpComing
+                  search={search}
+                  onAddToFavorites={addTofavorites}
+                  onRemoveFromFavorites={removeFromFavorites}
+                  favList={favorites}
+                />
+              }
+            />
 
-        <Route
-          path="/movie/top-rated"
-          element={
-            <TopRated search={search} onAddToFavorites={addTofavorites} />
-          }
-        />
+            <Route
+              path="/movie/top-rated"
+              element={
+                <TopRated
+                  search={search}
+                  onAddToFavorites={addTofavorites}
+                  onRemoveFromFavorites={removeFromFavorites}
+                  favList={favorites}
+                />
+              }
+            />
 
-        <Route
-          path="/favorites"
-          element={
-            <Favorites favList={favorites} onRemove={removeFromFavorites} />
-          }
-        />
-      </Routes>
+            <Route
+              path="/favorites"
+              element={
+                <Favorites favList={favorites} onRemove={removeFromFavorites} />
+              }
+            />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 };

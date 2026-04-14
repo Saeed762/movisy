@@ -1,7 +1,9 @@
 .movie_card {
-  width: 200px;
-  height: 300px;
-  margin: 15px;
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 2 / 3;
+  height: auto;
+  margin: 0 auto;
   overflow: hidden;
   border-radius: 10px;
   color: #fff;
@@ -17,6 +19,7 @@
 .movie_poster {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .movie_details {
@@ -85,19 +88,13 @@
   transform: scale(1.2);
   color: rgb(235, 84, 84);
 }
-.item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
 
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
-}
+@media (max-width: 768px) {
+  .movie_details_heading {
+    font-size: 14px;
+  }
 
-/* 🔥 أهم سطر */
-.item img {
-  width: 80px; /* حجم صغير */
-  height: 100px; /* ثابت */
-  object-fit: cover;
+  .movie_description {
+    font-size: 11px;
+  }
 }

@@ -7,6 +7,7 @@ export default function MoviesSection({
   search,
   favList,
   onAddToFavorites,
+  onRemoveFromFavorites,
 }) {
   const [movies, setMovies] = useState([]);
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -45,6 +46,7 @@ export default function MoviesSection({
               rate={movie.vote_average.toFixed(1)}
               date={movie.release_date}
               add={onAddToFavorites}
+              remove={onRemoveFromFavorites}
               favList={favList} // 🔥 مهم جداً
             />
           ))}

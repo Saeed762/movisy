@@ -1,6 +1,6 @@
 import MoviesSection from "./MoviesSection";
 import "../Style/movie-list.css";
-function Moive_List({ search, onAddToFavorites, favList }) {
+function Moive_List({ search, onAddToFavorites, onRemoveFromFavorites, favList }) {
   return (
     <>
       <div style={{ padding: "20px" }}>
@@ -9,6 +9,7 @@ function Moive_List({ search, onAddToFavorites, favList }) {
           type="popular"
           search={search}
           onAddToFavorites={onAddToFavorites}
+          onRemoveFromFavorites={onRemoveFromFavorites}
           favList={favList}
         />
       </div>
@@ -18,6 +19,8 @@ function Moive_List({ search, onAddToFavorites, favList }) {
           type="upcoming"
           search={search}
           onAddToFavorites={onAddToFavorites}
+          onRemoveFromFavorites={onRemoveFromFavorites}
+          favList={favList}
         />
       </div>
       <div style={{ padding: "20px" }}>
@@ -26,6 +29,8 @@ function Moive_List({ search, onAddToFavorites, favList }) {
           type="top_rated"
           search={search}
           onAddToFavorites={onAddToFavorites}
+          onRemoveFromFavorites={onRemoveFromFavorites}
+          favList={favList}
         />
       </div>
     </>
