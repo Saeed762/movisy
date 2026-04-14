@@ -1,4 +1,4 @@
-import "./app.css";
+import "./App.css";
 import Navbar from "./Components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MovieDetails from "./Components/Moviedetails";
