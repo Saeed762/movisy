@@ -1,4 +1,4 @@
-import "../Style/Search_bar.css";
+import "../Style/search_bar.css";
 
 export default function SearchBar({ setSearch }) {
   return (
