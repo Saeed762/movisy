@@ -4,12 +4,35 @@ import "../Style/movie-card.css";
 import { FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
+
+const GENRE_MAP = {
+  28: "Action",
+  12: "Adventure",
+  16: "Animation",
+  35: "Comedy",
+  80: "Crime",
+  99: "Documentary",
+  18: "Drama",
+  10751: "Family",
+  14: "Fantasy",
+  36: "History",
+  27: "Horror",
+  10402: "Music",
+  9648: "Mystery",
+  10749: "Romance",
+  878: "Science Fiction",
+  10770: "TV Movie",
+  53: "Thriller",
+  10752: "War",
+  37: "Western",
+};
 export function MovieCard({
   name,
   image,
   description,
   rate,
   date,
+  genreIds = [],
   id,
   add,
   remove,
@@ -19,15 +42,18 @@ export function MovieCard({
   const isFavorite = favList.some((movie) => movie.id === id);
   const enterTimer = useRef(null);
   const idleTimer = useRef(null);
-  const hideTimer = useRef(null);
   const [showPopup, setShowPopup] = useState(false);
   const [popupPos, setPopupPos] = useState({ x: 0, y: 0 });
+  const movieGenres = genreIds
+    .map((genreId) => GENRE_MAP[genreId])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join(", ");
 
   useEffect(() => {
     return () => {
       if (enterTimer.current) clearTimeout(enterTimer.current);
       if (idleTimer.current) clearTimeout(idleTimer.current);
-      if (hideTimer.current) clearTimeout(hideTimer.current);
     };
   }, []);
 
@@ -36,7 +62,6 @@ export function MovieCard({
   const hidePopup = () => {
     if (enterTimer.current) clearTimeout(enterTimer.current);
     if (idleTimer.current) clearTimeout(idleTimer.current);
-    if (hideTimer.current) clearTimeout(hideTimer.current);
     setShowPopup(false);
   };
 
@@ -64,13 +89,6 @@ export function MovieCard({
     });
   };
 
-  const schedulePopup = (event) => {
-    if (!isDesktop()) return;
-    setPopupFromMouse(event);
-    if (idleTimer.current) clearTimeout(idleTimer.current);
-    idleTimer.current = setTimeout(() => setShowPopup(true), 700);
-  };
-
   return (
     <div
       className="movie_card"
@@ -83,11 +101,9 @@ export function MovieCard({
       }}
       onMouseMove={(event) => {
         if (!isDesktop()) return;
-        if (hideTimer.current) clearTimeout(hideTimer.current);
-        if (showPopup) {
-          hideTimer.current = setTimeout(() => setShowPopup(false), 220);
-        }
-        schedulePopup(event);
+        if (enterTimer.current) clearTimeout(enterTimer.current);
+        if (idleTimer.current) clearTimeout(idleTimer.current);
+        if (showPopup) setShowPopup(false);
       }}
       onMouseLeave={hidePopup}
     >
@@ -129,7 +145,8 @@ export function MovieCard({
             <div className="popup_info">
               <h4>{name}</h4>
               <p>📅 {date || "N/A"}</p>
-              <p>التقييم: ⭐ {rate}</p>
+              <p>rate: ⭐ {rate}</p>
+              <p>genre: {movieGenres || "Unknown"}</p>
             </div>
           </div>,
           document.body,

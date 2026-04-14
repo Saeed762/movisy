@@ -45,6 +45,7 @@ export default function MoviesSection({
               description={movie.overview}
               rate={movie.vote_average.toFixed(1)}
               date={movie.release_date}
+              genreIds={movie.genre_ids}
               add={onAddToFavorites}
               remove={onRemoveFromFavorites}
               favList={favList}
